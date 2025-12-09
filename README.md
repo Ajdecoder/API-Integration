@@ -77,14 +77,14 @@ http://localhost:3000
 ### 1️⃣ Get all posts (with filters)
 
 ```
-GET /posts
+GET /api/posts
 ```
 
 **Optional Filters**
 
 ```
-GET /posts?userId=1
-GET /posts?title=qui
+GET /api/posts?userId=1
+GET /api/posts?title=qui
 ```
 
 ---
@@ -92,13 +92,13 @@ GET /posts?title=qui
 ### 2️⃣ Get single post by ID
 
 ```
-GET /posts/:id
+GET /api/posts/:id
 ```
 
 Example:
 
 ```
-GET /posts/5
+GET /api/posts/5
 ```
 
 ---
@@ -106,15 +106,23 @@ GET /posts/5
 ### 3️⃣ Get all users
 
 ```
-GET /users
+GET /api/users
 ```
 
 ---
 
-### 4️⃣ Force refresh API (ignore cache)
+### 4️⃣ Get single user by ID
 
 ```
-GET /refresh
+GET /api/users/:id
+```
+
+---
+
+### 5️⃣ Force refresh API (ignore cache)
+
+```
+GET /api/refresh
 ```
 
 ---
