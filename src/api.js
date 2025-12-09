@@ -8,13 +8,12 @@ async function fetchData(force = false) {
 
   try {
     const [postsRes, usersRes] = await Promise.all([
-      axios.get(BASE_URL + "/posts", { timeout: 5000 }),
-      axios.get(BASE_URL + "/users", { timeout: 5000 })
+      axios.get(BASE_URL + "/posts", { timeout: 1000 }),
+      axios.get(BASE_URL + "/users", { timeout: 1000 })
     ]);
     cache = { posts: postsRes.data, users: usersRes.data, fetchedAt: Date.now() };
     saveCache(cache); return cache;
   } catch (err) {
-    if (cache.posts && cache.users) return cache;
     throw new Error("API fetch failed");
   }
 }

@@ -7,10 +7,10 @@ router.get("/refresh", async (req, res) => {
     const data = await fetchData(true);
     res.json({
       message: "Cache refreshed successfully",
-      fetchedAt: data.fetchedAt,
+      fetchedAt: new Date(data.fetchedAt),
     });
   } catch (err) {
-    res.status(500).json({ error: "Failed to refresh cache" });
+    res.status(500).json({ error: "Failed to refresh cache", details: err.message });
   }
 });
 
