@@ -23,4 +23,22 @@ router.get("/posts/:id", async (req, res) => {
   } catch (err) { return res.status(500).json({ error: err.message }); }
 });
 
+router.get("/users", async (req, res) => {
+  try {
+    const data = await fetchData(false);
+    return res.json({ count: data.users.length, users: data.users });
+  } catch (err) { return res.status(500).json({ error: err.message }); }
+});
+
+router.get("/users/:id", async (req, res) => {
+  try {
+    const data = await fetchData(false);
+    const user = data.users.find(u => u.id == req.params.id);
+    if (!user) return res.status(404).json({ error: "User not found" });
+    const userPosts = data.posts.filter(p => p.userId == user.id);
+    return res.json({ user, posts: userPosts });
+  } catch (err) { return res.status(500).json({ error: err.message }); }
+});
+
+
 module.exports = router;
